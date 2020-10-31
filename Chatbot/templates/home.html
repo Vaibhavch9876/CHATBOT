@@ -620,8 +620,8 @@
         <div id="chat-bot-mode">
             <div id="chat-bot-mode-icon"></div>
             <div id="chat-bot-mode-label">
-                <h1 id="chat-bot-mode-text">Chatbot is feeling</h1>
-                <h1 id="chat-bot-mode-value">mode</h1>
+                <h5 id="chat-bot-mode-text">Chatbot is feeling</h5>
+                <h5 id="chat-bot-mode-value">mode</h5>
             </div>
         </div>
         <div id="letter-pool"></div>
@@ -981,7 +981,7 @@
                 profileIcon = document.createElement('div'),
                 icon = document.createElement('i'),
                 content = document.createElement('div'),
-                contentText = document.createElement('h1'),
+                contentText = document.createElement('h5'),
                 direction = isReceived ? 'received' : 'sent';
             addClass(content, 'content');
             addClass(content, 'invisible');
@@ -1073,9 +1073,9 @@
                     addClass(overlayLetter, 'invisible');
                     setTimeout(() => {
                         removeChild(LETTER_OVERLAY, overlayLetter);
-                    }, 1000);
-                }, 1500);
-            }, 100);
+                    }, 100);
+                }, 150);
+            }, 10);
         };
 
         const animateMessageLetters = (message, isReceived) => {
@@ -1100,7 +1100,7 @@
                     animateOverlayLetter(tempLetter, contentText, finalPos, isReceived);
                     setTimeout(() => {
                         removeChild(TEMP_LETTER_POOL, tempLetter);
-                    }, 100);
+                    }, 10);
                 }
             }
         };
@@ -1255,15 +1255,38 @@
         window.onfocus = () => resetLetterPool();
 
         window.onresize = _.throttle(resetLetterPool, 200);
-        const greetings = {
-            modeOne: ["Hiya, pal. I hope you're having a terrific day!", "Good day to you, friend!"],
-            modeTwo: ["Hmm, I would introduce myself, but I'm not so sure thats a good idea.", "Hello, how are you? Wait, don't answer that, I have no way of verifying your response!"],
-            modeThree: ["Hey, did I mention I am built on JavaScript? Which is the greatest language ever by the way!", "Good day to you. Though I must say that I am having a GREAT day!"]
+
+        var Message = "";
+        {% for city in object_list %}
+          Message += "{{ city.p_statement | safe }}";
+          Message += "\nOptions:\n";
+          var optionA = "{{city.p_A}}\n";
+          var optionB = "{{city.p_B}}\n";
+          var optionC = "{{city.p_C}}\n";
+          var optionD = "{{city.p_D}}\n";
+          var optionE = "{{city.p_E}}\n";
+          if(optionA.length != 0 )
+            Message += "A. " + optionA;
+          if(optionB.length != 0 )
+            Message += "B. " + optionB;
+          if(optionC.length != 0 )
+            Message += "C. " + optionC;
+          if(optionD.length != 0 )
+            Message += "D. " + optionD;
+          if(optionE.length != 0 )
+            Message += "E. " + optionE;
+      {% endfor %}
+
+      const greetings = {
+            modeOne: [Message],
+            modeTwo: [Message],
+            modeThree: [Message]
         };
+
         const convo = {
-            modeOne: [ "one" ],
-            modeTwo: [" bye" ] ,
-            modeThree: ["three"]
+            modeOne: [ Message ],
+            modeTwo: [ Message ] ,
+            modeThree: [ Message ]
         };
     </script>
 </body>

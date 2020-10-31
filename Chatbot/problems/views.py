@@ -63,7 +63,7 @@ class HomePageView(TemplateView):
 
 class SearchResultsView(ListView):
     model = Problem
-    template_name = 'search_results.html'
+    template_name = 'home.html'
 
     def get_queryset(self):  # new
         global first_time
