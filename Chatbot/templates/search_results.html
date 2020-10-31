@@ -3,7 +3,17 @@
 <ul>
   {% for city in object_list %}
     <li>
-      {{ city.p_statement }}, {{ city.p_tags }}
+      <pre> {{ city.p_statement | safe }} </pre>
+      <h2>Options</h2>
+      <pre>A. {{city.p_A}}</pre>
+      <pre>B. {{city.p_B}}</pre>
+      <pre>C. {{city.p_C}}</pre>
+      <pre>D. {{city.p_D}}</pre>
+      <pre>E. {{city.p_E}}</pre>
+      <h2>Correct : </h2>
+      <pre>{{city.p_correct}}</pre>
+      <h2> Tags : {{ city.p_tags | safe }} </h2>
+      <h2> Rating : {{ city.p_rating }} </h2>
     </li>
   {% endfor %}
 </ul>
