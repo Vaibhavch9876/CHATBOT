@@ -50,29 +50,29 @@
           white-space: nowrap;
           z-index: 10;
         }
-        #chat-wrapper #chat-bot-mode.modeOne #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.Smart #chat-bot-mode-icon {
           background: linear-gradient(to right, #00bfaa, #00bfaa);
         }
         #chat-wrapper
-          #chat-bot-mode.modeOne
+          #chat-bot-mode.Smart
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #FFFFFF;
         }
-        #chat-wrapper #chat-bot-mode.modeTwo #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.Creative #chat-bot-mode-icon {
           background: linear-gradient(to right, #d32f2f, #ff6f00);
         }
         #chat-wrapper
-          #chat-bot-mode.modeTwo
+          #chat-bot-mode.Creative
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #d32f2f;
         }
-        #chat-wrapper #chat-bot-mode.modeThree #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.Passionate #chat-bot-mode-icon {
           background: linear-gradient(to right, #ff6f00, #fbc02d);
         }
         #chat-wrapper
-          #chat-bot-mode.modeThree
+          #chat-bot-mode.Passionate
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #ff6f00;
@@ -87,7 +87,7 @@
           width: 30px;
         }
         #chat-wrapper #chat-bot-mode #chat-bot-mode-label {
-          background-color: white;
+          background-color: #4f555f;
           border-radius: 20px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
           display: inline-block;
@@ -98,8 +98,8 @@
         }
         #chat-wrapper #chat-bot-mode #chat-bot-mode-label h1 {
           display: inline-block;
-          font-size: 0.9em;
-          font-weight: 300;
+          font-size: 1.0rem;
+          font-weight: 700;
           height: 20px;
           line-height: 20px;
           margin: 0px;
@@ -172,9 +172,12 @@
           position: absolute;
           top: 50%;
           transform: translateX(-50%) translateY(-50%);
-          background-color: #00bfaa;
-          border-radius: 100px;
-          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+          background-color: transparent;
+          text-align: center;
+          border-bottom: 2px solid #00bffa;
+          border-right: 1px solid #00bffa;
+          border-bottom-right-radius: 100px;
+          border-top-right-radius: 100px;
           height: 50px;
           line-height: 50px;
           overflow: hidden;
@@ -214,9 +217,9 @@
           #message-input
           #message-input-field {
           border: none;
-          color: black;
+          color: white;
           font-size: 1em;
-          font-weight: 300;
+          font-weight: 600;
           margin-left: 20px;
           outline: none;
           width: 430px;
@@ -301,7 +304,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.modeOne
+          .message.received.Smart
           .profile-icon {
           background: linear-gradient(to right, #FFFFFF, #00bfaa);
         }
@@ -309,7 +312,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.modeTwo
+          .message.received.Creative
           .profile-icon {
           background: linear-gradient(to right, #d32f2f, #ff6f00);
         }
@@ -317,7 +320,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.modeThree
+          .message.received.Passionate
           .profile-icon {
           background: linear-gradient(to right, #ff6f00, #fbc02d);
         }
@@ -442,7 +445,7 @@
           .text {
           color: #00bfaa;
           font-size: 1em;
-          font-weight: 500;
+          font-weight: 700;
           margin: 0px;
           min-height: 20px;
           transition: all 0.5s;
@@ -613,6 +616,8 @@
         }
         #message-input-field {
           font-family: "Fira Mono", monospace;
+          color: #fff;
+          background-color : transparent;
         }
     </style>
     <title>Document</title>
@@ -622,8 +627,9 @@
         <div id="chat-bot-mode">
             <div id="chat-bot-mode-icon"></div>
             <div id="chat-bot-mode-label">
-                <h5 id="chat-bot-mode-text">Chatbot is feeling</h5>
-                <h5 id="chat-bot-mode-value">mode</h5>
+                <h1 id="chat-bot-mode-text">We are looking for</h1>
+                <h1 id="chat-bot-mode-value">mode</h1>
+                <h1 id="chat-bot-mode-text">programmers.</h1>
             </div>
         </div>
         <div id="letter-pool"></div>
@@ -779,7 +785,7 @@
                 transitionPeriod: 30000,
                 intervals: []
             },
-            modes: ['modeOne', 'modeTwo', 'modeThree'],
+            modes: ['Smart', 'Creative', 'Passionate'],
             currentmode: '',
             chatbotMessageIndex: 0,
             nLetterSets: 4
@@ -805,21 +811,21 @@
         const getRandGreeting = () => {
                     ++messageIndex;
                     messageIndex %= messageCount;
-                    return greetings.modeOne[ (messageIndex - 1 + messageCount) % messageCount ];
+                    return greetings.Smart[ (messageIndex - 1 + messageCount) % messageCount ];
 <!--            let rand = 0;-->
 
 <!--            switch (STATE.currentmode) {-->
-<!--                case 'modeOne':-->
-<!--                    rand = getRand(1, greetings.modeOne.length);-->
-<!--                    return greetings.modeOne[rand - 1];-->
+<!--                case 'Smart':-->
+<!--                    rand = getRand(1, greetings.Smart.length);-->
+<!--                    return greetings.Smart[rand - 1];-->
 
-<!--                case 'modeTwo':-->
-<!--                    rand = getRand(1, greetings.modeTwo.length);-->
-<!--                    return greetings.modeTwo[rand - 1];-->
+<!--                case 'Creative':-->
+<!--                    rand = getRand(1, greetings.Creative.length);-->
+<!--                    return greetings.Creative[rand - 1];-->
 
-<!--                case 'modeThree':-->
-<!--                    rand = getRand(1, greetings.modeThree.length);-->
-<!--                    return greetings.modeThree[rand - 1];-->
+<!--                case 'Passionate':-->
+<!--                    rand = getRand(1, greetings.Passionate.length);-->
+<!--                    return greetings.Passionate[rand - 1];-->
 
 <!--                default:-->
 <!--                    break;-->
@@ -829,21 +835,21 @@
         const getRandConvo = () => {
                 ++messageIndex;
                 messageIndex %= messageCount;
-                return greetings.modeOne[ (messageIndex - 1 + messageCount) % messageCount ];
+                return greetings.Smart[ (messageIndex - 1 + messageCount) % messageCount ];
 <!--            let rand = 0;-->
 
 <!--            switch (STATE.currentmode) {-->
-<!--                case 'modeOne':-->
-<!--                    rand = getRand(1, convo.modeOne.length);-->
-<!--                    return convo.modeOne[rand - 1];-->
+<!--                case 'Smart':-->
+<!--                    rand = getRand(1, convo.Smart.length);-->
+<!--                    return convo.Smart[rand - 1];-->
 
-<!--                case 'modeTwo':-->
-<!--                    rand = getRand(1, convo.modeTwo.length);-->
-<!--                    return convo.modeTwo[rand - 1];-->
+<!--                case 'Creative':-->
+<!--                    rand = getRand(1, convo.Creative.length);-->
+<!--                    return convo.Creative[rand - 1];-->
 
-<!--                case 'modeThree':-->
-<!--                    rand = getRand(1, convo.modeThree.length);-->
-<!--                    return convo.modeThree[rand - 1];-->
+<!--                case 'Passionate':-->
+<!--                    rand = getRand(1, convo.Passionate.length);-->
+<!--                    return convo.Passionate[rand - 1];-->
 
 <!--                default:-->
 <!--                    break;-->
@@ -1343,15 +1349,15 @@
 <!--            Message += "E. " + optionE;-->
         {% endfor %}
       const greetings = {
-            modeOne: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            modeTwo: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            modeThree: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
+            Smart: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            Creative: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            Passionate: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
 
         const convo = {
-            modeOne: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            modeTwo: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ] ,
-            modeThree: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
+            Smart: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            Creative: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ] ,
+            Passionate: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
     </script>
 </body>
