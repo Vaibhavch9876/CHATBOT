@@ -5,6 +5,7 @@
 2. Implement efficient searching for problems with multiple tags 
 -Done
 3. Extract skills from text entered by user 
+- Done
 4. Implement algorithm to decide the difficulty of problems according to user performance in 
 previous questions 
 5. Implement report generation 
