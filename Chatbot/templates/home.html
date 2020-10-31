@@ -15,11 +15,11 @@
         crossorigin="anonymous" />
 <!--    <link rel="stylesheet" href="style.css">-->
     <style type = "text/css" >
-        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 
         html,
         body {
-          font-family: "Roboto", sans-serif;
+          font-family: "Fira Mono", monospace;
           height: 100%;
           margin: 0px;
           overflow: hidden;
@@ -51,7 +51,7 @@
           z-index: 10;
         }
         #chat-wrapper #chat-bot-mode.modeOne #chat-bot-mode-icon {
-          background: linear-gradient(to right, #4caf50, #4caf50);
+          background: linear-gradient(to right, #00bfaa, #00bfaa);
         }
         #chat-wrapper
           #chat-bot-mode.modeOne
@@ -172,7 +172,7 @@
           position: absolute;
           top: 50%;
           transform: translateX(-50%) translateY(-50%);
-          background-color: #4caf50;
+          background-color: #00bfaa;
           border-radius: 100px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
           height: 50px;
@@ -303,7 +303,7 @@
           #chat-message-column
           .message.received.modeOne
           .profile-icon {
-          background: linear-gradient(to right, #FFFFFF, #4caf50);
+          background: linear-gradient(to right, #FFFFFF, #00bfaa);
         }
         #chat-wrapper
           #chat-message-window
@@ -420,7 +420,7 @@
           #chat-message-column
           .message
           .content {
-          background-color: white;
+          background-color: #4f555f;
           border-radius: 25px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
           display: inline-block;
@@ -440,9 +440,9 @@
           .message
           .content
           .text {
-          color: #FFFFFF /* #FFFFFF; */
+          color: #00bfaa;
           font-size: 1em;
-          font-weight: 300;
+          font-weight: 500;
           margin: 0px;
           min-height: 20px;
           transition: all 0.5s;
@@ -610,6 +610,9 @@
           50% {
             color: #FFFFFF;
           }
+        }
+        #message-input-field {
+          font-family: "Fira Mono", monospace;
         }
     </style>
     <title>Document</title>
@@ -1304,8 +1307,8 @@
             Message3 = "B. " + optionB;
             visibility3 = true; }
            else {
-            Message3 = "";
-            visibility3 = false;
+                Message3 = "";
+                visibility3 = false;
             }
            if(optionC.length != 0 ) {
             Message4 = "C. " + optionC;
