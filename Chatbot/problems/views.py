@@ -16,4 +16,5 @@ class SearchResultsView(ListView):
         object_list = Problem.objects.filter(
             Q(p_tags__icontains=query)
         )
+        print(object_list)
         return object_list
