@@ -12,9 +12,15 @@ class SearchResultsView(ListView):
     template_name = 'search_results.html'
 
     def get_queryset(self):  # new
-        query = self.request.GET.get('q')
-        object_list = Problem.objects.filter(
-            Q(p_tags__icontains=query)
-        )
-        print(object_list)
-        return object_list
+        queries = self.request.GET.get('q')
+        # for query in queries.split():
+        objects = [
+            Problem.objects.filter(Q(p_tags__icontains=query)) for query in list(queries.strip().split())
+        ]
+        obj_list = []
+        for i in objects :
+            for j in i:
+                obj_list.append(j)
+        obj_list = list(set(obj_list))
+        print(obj_list)
+        return obj_list
