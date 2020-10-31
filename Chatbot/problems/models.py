@@ -30,3 +30,5 @@ class Problem(models.Model):
         if self.p_E != None :
             res+= " " + self.p_E
         return res
+    def get_rating(self):
+        return int(self.p_rating)
