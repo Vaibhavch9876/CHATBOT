@@ -17,4 +17,6 @@ previous questions
 7. Implement frontend 
 - Done
 8. Integrate everything 
-9. Deploy
+- Done
+9. Remove Bugs
+10. Deploy
