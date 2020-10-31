@@ -8,7 +8,7 @@
 - Done
 4. Implement algorithm to decide the difficulty of problems according to user performance in 
 previous questions 
-5. Implement report generation git a
+5. Implement report generation
 6. Implement speech to text 
 7. Implement frontend 
 - Done
