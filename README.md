@@ -14,3 +14,6 @@ previous questions
 - Done
 8. Integrate everything 
 9. Deploy
+# Screenshots 
+<img src="screenshots/Screenshot (754).png" width="500"> 
+<img src="screenshots/Screenshot (755).png" width="500"> 
