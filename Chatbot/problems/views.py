@@ -15,7 +15,7 @@ class SearchResultsView(ListView):
         queries = self.request.GET.get('q')
         # for query in queries.split():
         objects = [
-            Problem.objects.filter(Q(p_tags__icontains=query)) for query in list(queries.strip().split())
+            Problem.objects.filter(Q(p_tags__iregex='\\b(' + query + ')\\b')) for query in list(queries.strip().split())
         ]
         obj_list = []
         for i in objects :
