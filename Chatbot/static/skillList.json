@@ -1,0 +1,5 @@
+{
+    "cpp":[    "c++", "cplusplus"],
+    "java":["java", "java8", "JavaC"],
+    "c#":["csharp", "chash", "c#"]
+}
