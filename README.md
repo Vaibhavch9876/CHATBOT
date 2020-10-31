@@ -1,9 +1,9 @@
 # ChatBot 
 ## TODO : 
 1. Implement problem class using tags for searching and rating for difficulty
--Done
+- Done
 2. Implement efficient searching for problems with multiple tags 
--Done
+- Done
 3. Extract skills from text entered by user 
 - Done
 4. Implement algorithm to decide the difficulty of problems according to user performance in 
