@@ -786,7 +786,8 @@
             const rand = getRand(1, 3);
             return STATE.modes[rand - 1];
         };
-
+        var messageIndex = 0;
+        var messageCount = 6;
         const setChatbotmode = () => {
             STATE.currentmode = getRandmode();
 
@@ -799,45 +800,51 @@
         };
 
         const getRandGreeting = () => {
-            let rand = 0;
+                    ++messageIndex;
+                    messageIndex %= messageCount;
+                    return greetings.modeOne[ (messageIndex - 1 + messageCount) % messageCount ];
+<!--            let rand = 0;-->
 
-            switch (STATE.currentmode) {
-                case 'modeOne':
-                    rand = getRand(1, greetings.modeOne.length);
-                    return greetings.modeOne[rand - 1];
+<!--            switch (STATE.currentmode) {-->
+<!--                case 'modeOne':-->
+<!--                    rand = getRand(1, greetings.modeOne.length);-->
+<!--                    return greetings.modeOne[rand - 1];-->
 
-                case 'modeTwo':
-                    rand = getRand(1, greetings.modeTwo.length);
-                    return greetings.modeTwo[rand - 1];
+<!--                case 'modeTwo':-->
+<!--                    rand = getRand(1, greetings.modeTwo.length);-->
+<!--                    return greetings.modeTwo[rand - 1];-->
 
-                case 'modeThree':
-                    rand = getRand(1, greetings.modeThree.length);
-                    return greetings.modeThree[rand - 1];
+<!--                case 'modeThree':-->
+<!--                    rand = getRand(1, greetings.modeThree.length);-->
+<!--                    return greetings.modeThree[rand - 1];-->
 
-                default:
-                    break;
-            }
+<!--                default:-->
+<!--                    break;-->
+<!--            }-->
         };
 
         const getRandConvo = () => {
-            let rand = 0;
+                ++messageIndex;
+                messageIndex %= messageCount;
+                return greetings.modeOne[ (messageIndex - 1 + messageCount) % messageCount ];
+<!--            let rand = 0;-->
 
-            switch (STATE.currentmode) {
-                case 'modeOne':
-                    rand = getRand(1, convo.modeOne.length);
-                    return convo.modeOne[rand - 1];
+<!--            switch (STATE.currentmode) {-->
+<!--                case 'modeOne':-->
+<!--                    rand = getRand(1, convo.modeOne.length);-->
+<!--                    return convo.modeOne[rand - 1];-->
 
-                case 'modeTwo':
-                    rand = getRand(1, convo.modeTwo.length);
-                    return convo.modeTwo[rand - 1];
+<!--                case 'modeTwo':-->
+<!--                    rand = getRand(1, convo.modeTwo.length);-->
+<!--                    return convo.modeTwo[rand - 1];-->
 
-                case 'modeThree':
-                    rand = getRand(1, convo.modeThree.length);
-                    return convo.modeThree[rand - 1];
+<!--                case 'modeThree':-->
+<!--                    rand = getRand(1, convo.modeThree.length);-->
+<!--                    return convo.modeThree[rand - 1];-->
 
-                default:
-                    break;
-            }
+<!--                default:-->
+<!--                    break;-->
+<!--            }-->
         };
 
         const createLetter = (cName, val) => {
@@ -858,7 +865,6 @@
                 letter = createLetter('pool-letter', val);
                 letters.push(letter);
             }
-
             return letters;
         };
 
@@ -1151,10 +1157,14 @@
         };
 
         const sendChatbotMessage = () => {
-            const text = getChatbotMessageText();
-            STATE.isChatBotSendingMessage = true;
-            addChatMessage(text, true);
-            STATE.chatbotMessageIndex++;
+            for(var i = 0 ; i < 6; ++i ) {
+                const text = getChatbotMessageText();
+                if( text.length != 0 ) {
+                    STATE.isChatBotSendingMessage = true;
+                    addChatMessage(text, true);
+                    STATE.chatbotMessageIndex++;
+                }
+            }
             setTimeout(() => {
                 STATE.isChatBotSendingMessage = false;
                 toggleInput();
@@ -1185,11 +1195,9 @@
 
             sendUserMessage();
 
-
-
             setTimeout(() => {
                 sendChatbotMessage();
-            }, 400);
+            }, 40);
             toggleInput();
             clearInputField();
         };
@@ -1272,37 +1280,75 @@
 
         window.onresize = _.throttle(resetLetterPool, 200);
 
-        var Message = "";
+        var Message1 , Message2 , Message3 , Message4 , Message5 , Message6;
+        var visibility1 = true , visibility2 = true , visibility3 = true , visibility4 = true , visibility5 = true , visibility6 = true;
+
         {% for city in object_list %}
-          Message = "";
-          Message += "{{ city.p_statement | safe }}";
-          Message += "Options:";
+          Message1 = "{{ city.p_statement | safe }}";
           var optionA = "{{city.p_A}}";
           var optionB = "{{city.p_B}}";
           var optionC = "{{city.p_C}}";
           var optionD = "{{city.p_D}}";
           var optionE = "{{city.p_E}}";
-          if(optionA.length != 0 )
-            Message += "A. " + optionA;
-          if(optionB.length != 0 )
-            Message += "B. " + optionB;
-          if(optionC.length != 0 )
-            Message += "C. " + optionC;
-          if(optionD.length != 0 )
-            Message += "D. " + optionD;
-          if(optionE.length != 0 )
-            Message += "E. " + optionE;
+
+          if(optionA.length != 0 ) {
+            Message2 = "A. " + optionA;
+            visibility2 = true;
+            }
+           else {
+            Message2 = "";
+            visibility2 = false;
+            }
+
+           if(optionB.length != 0 ) {
+            Message3 = "B. " + optionB;
+            visibility3 = true; }
+           else {
+            Message3 = "";
+            visibility3 = false;
+            }
+           if(optionC.length != 0 ) {
+            Message4 = "C. " + optionC;
+            visibility4 = true; }
+           else {
+            Message4 = "";
+            visibility4 = false; }
+
+          if(optionD.length != 0 ) {
+            Message5 = "D. " + optionD;
+            visibility5 = true; }
+           else  {
+            Message5 = "";
+            visibility5 = false; }
+
+
+          if(optionE.length != 0 ) {
+            Message6 = "E. " + optionE;
+            visibility6 = true; }
+           else  {
+            Message6 = "";
+            visibility6 = false;
+           }
+
+<!--          if(optionB.length != 0 )-->
+<!--            Message += "B. " + optionB;-->
+<!--          if(optionC.length != 0 )-->
+<!--            Message += "C. " + optionC;-->
+<!--          if(optionD.length != 0 )-->
+<!--            Message += "D. " + optionD;-->
+<!--          if(optionE.length != 0 )-->
+<!--            Message += "E. " + optionE;-->
         {% endfor %}
       const greetings = {
-            modeOne: [Message],
-            modeTwo: [Message],
-            modeThree: [Message]
+            modeOne: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            modeTwo: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            modeThree: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
 
         const convo = {
-            modeOne: [ Message ],
-            modeTwo: [ Message ] ,
-            modeThree: [ Message ]
+            modeOne: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            modeTwo: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ] ,
+            modeThree: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
     </script>
 </body>
