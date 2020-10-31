@@ -20,10 +20,20 @@ def loadSkillList():
     # skill_file_obj = open(JSON_SKILL_LIST_PATH , )
     # skill_list = json.load(skill_file_obj)
     skill_list = {
+        "c" : ["c"] ,
         "cpp": ["c++", "cplusplus"],
         "java": ["java", "java8", "JavaC"],
         "c#": ["csharp", "chash", "c#"],
         "python" : ["python" , "python3" , "python2" , "py"] ,
+        "numpy" : ["numpy" , "np" , "python" , "python2" , "python3" , "python2"] ,
+        "scipy" : ["scipy"] ,
+        "sklearn" : ["scikit-learn" , "sklearn" , "sk learn"] ,
+        "tensorflow" : ['tensorflow', 'tf', 'tensor-flow'] ,
+        "keras" : ["keras"] ,
+        "h20" : ["h20"] ,
+        "PHP" : ["php"] ,
+        "SQl" : ["SQL" , "mysql" , "Postgress", "Postgresql" , "Oracle"] ,
+        "R" : ["R"] ,
         "javascript": ["js", "js6", "javascript", "javaScript6"]
     }
     for skill in skill_list:
