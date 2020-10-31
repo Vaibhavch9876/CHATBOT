@@ -1,3 +1,3 @@
 # Beta28_WhiteHatSr
 
-Problem statement 6 : Chatbot for conducting Tests
+Problem statement 6 : Chatbot for conducting TESTS
