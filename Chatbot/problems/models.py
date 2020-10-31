@@ -17,4 +17,16 @@ class Problem(models.Model):
       verbose_name_plural = "problems"
 
     def __str__(self):
-        return self.p_statement
+        res =  self.p_statement
+        res += "Options : ";
+        if self.p_A != None :
+            res+= " " + self.p_A
+        if self.p_B != None :
+            res+= " " + self.p_B
+        if self.p_C != None :
+            res+= " " + self.p_C
+        if self.p_D != None :
+            res+= " " + self.p_D
+        if self.p_E != None :
+            res+= " " + self.p_E
+        return res

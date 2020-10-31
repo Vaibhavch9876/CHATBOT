@@ -614,7 +614,6 @@
     </style>
     <title>Document</title>
 </head>
-
 <body>
     <div id="chat-wrapper">
         <div id="chat-bot-mode">
@@ -630,11 +629,11 @@
         <div id="chat-message-window">
             <div id="message-input-wrapper">
                 <div id="message-input">
-                <form action="{% url 'search_results' %}" method="get">
-<!--                  <input name="q" type="text" placeholder="Search...">-->
-                    <input name="q" id="message-input-field" type="text" placeholder="Type a message"/>
+                <form id="inputForm" action = "{% url 'search_results' %}" method="get">
+<!--                    <input name="q" type="text" placeholder="Search...">-->
+                        <input name="q" id="message-input-field" type="text" placeholder="Type a message"/>
+                        <div id="send-message-button"><i class="far fa-arrow-alt-circle-right"></i></div>
                 </form>
-<!--                    <div id="send-message-button"><i class="far fa-arrow-alt-circle-right"></i></div>-->
                 </div>
 
             </div>
@@ -765,8 +764,10 @@
             CHAT_MESSAGE_COLUMN = getEl('chat-message-column'),
             MESSAGE_INPUT = getEl('message-input'),
             MESSAGE_INPUT_FIELD = getEl('message-input-field'),
+            input_form = getEl('inputForm'),
             CHAT_BOT_mode = getEl('chat-bot-mode'),
             CHAT_BOT_mode_VALUE = getEl('chat-bot-mode-value');
+
 
         const STATE = {
             isUserSendingMessage: false,
@@ -1162,7 +1163,11 @@
 
         const sendUserMessage = () => {
             const text = MESSAGE_INPUT_FIELD.value;
+            console.log(text);
+
             STATE.isUserSendingMessage = true;
+
+
             addChatMessage(text, false);
             setTimeout(() => {
                 STATE.isUserSendingMessage = false;
@@ -1170,11 +1175,21 @@
             }, 4000);
         };
 
-        const onEnterPress = e => {
+        const onEnterPress = async (e) => {
+            const text = MESSAGE_INPUT_FIELD.value;
+            console.log(text);
+
+            await fetch("http://127.0.0.1:8000/search/?q=" + text)
+            .then(response => response.json())
+            .then(data => console.log(data))
+
             sendUserMessage();
+
+
+
             setTimeout(() => {
                 sendChatbotMessage();
-            }, 4000);
+            }, 400);
             toggleInput();
             clearInputField();
         };
@@ -1252,19 +1267,21 @@
 
         window.onload = () => init();
 
-        window.onfocus = () => resetLetterPool();
+        window.onfocus = () => resetLetterPool(
+        );
 
         window.onresize = _.throttle(resetLetterPool, 200);
 
         var Message = "";
         {% for city in object_list %}
+          Message = "";
           Message += "{{ city.p_statement | safe }}";
-          Message += "\nOptions:\n";
-          var optionA = "{{city.p_A}}\n";
-          var optionB = "{{city.p_B}}\n";
-          var optionC = "{{city.p_C}}\n";
-          var optionD = "{{city.p_D}}\n";
-          var optionE = "{{city.p_E}}\n";
+          Message += "Options:";
+          var optionA = "{{city.p_A}}";
+          var optionB = "{{city.p_B}}";
+          var optionC = "{{city.p_C}}";
+          var optionD = "{{city.p_D}}";
+          var optionE = "{{city.p_E}}";
           if(optionA.length != 0 )
             Message += "A. " + optionA;
           if(optionB.length != 0 )
@@ -1275,8 +1292,7 @@
             Message += "D. " + optionD;
           if(optionE.length != 0 )
             Message += "E. " + optionE;
-      {% endfor %}
-
+        {% endfor %}
       const greetings = {
             modeOne: [Message],
             modeTwo: [Message],

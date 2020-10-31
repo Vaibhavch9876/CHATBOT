@@ -24,8 +24,8 @@ def loadSkillList():
         "cpp": ["c++", "cplusplus"],
         "java": ["java", "java8", "JavaC"],
         "c#": ["csharp", "chash", "c#"],
-        "python": ["python", "python3", "python2", "py"],
-        "numpy": ["numpy", "np", "python", "python2", "python3", "python2"],
+        "pyth": ["python", "python3", "python2", "py"],
+        "numpy": ["numpy", "np"],
         "scipy": ["scipy"],
         "sklearn": ["scikit-learn", "sklearn", "sk learn"],
         "tensorflow": ['tensorflow', 'tf', 'tensor-flow'],
@@ -68,6 +68,7 @@ class SearchResultsView(ListView):
     def get_queryset(self):  # new
         global first_time
         query_text = self.request.GET.get('q')
+        print("QUERY RECEIVED " , query_text)
         skill_count = {}
         if first_time:
             loadSkillList()
@@ -87,5 +88,10 @@ class SearchResultsView(ListView):
             for j in i:
                 obj_list.append(j)
         obj_list = list(set(obj_list))
-        print(obj_list)
+        print("\n\n\n\n\n\\n\n\n\n\n\n\n\n\n\n\n" , obj_list)
+        if len(obj_list) == 0 :
+            obj_list = [ {"p_statement" : "Not Found" } ]
+            print("Not Found")
+
+            print(obj_list)
         return obj_list
