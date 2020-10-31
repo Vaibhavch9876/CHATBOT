@@ -10,5 +10,7 @@
 previous questions 
 5. Implement report generation git a
 6. Implement speech to text 
-7. Implement frontend and integrate everything 
-8. Deploy
+7. Implement frontend 
+- Done
+8. Integrate everything 
+9. Deploy
