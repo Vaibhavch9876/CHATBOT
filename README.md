@@ -10,20 +10,13 @@
 #### - :white_check_mark: Compares you to others who took same test and gives your percentile score
 #### - :white_check_mark: Provides an option to get quiz along with detailed solutions mailed to your email for referring in future 
 
-## TODO : 
-- :white_check_mark: Implement problem class using tags for searching and rating for difficulty
-- :white_check_mark: Implement efficient searching for problems with multiple tags 
-- :white_check_mark: Extract skills from text entered by user 
-- :white_check_mark: Implement algorithm to decide the difficulty of problems according to user performance in 
-previous questions 
-- :white_check_mark: Implement report generation
-- :white_check_mark: Implement frontend 
-- :white_check_mark: Integrate everything 
-- :white_check_mark: Remove known Bugs
-- :white_check_mark: Implement functionality to review problems later (Mailer)
-- :clock9: Implement speech to text 
-- :clock9: Make chat-bot messages clickable options
-- :clock9: Deploy
+# Future scope :
+#### - :clock9: Implement speech to text for handicap people
+#### - :clock9: Implement text to speech for visually impaired people
+#### - :clock9: Implement user account creation and provide an option to save quiz, favourite question
+#### - :clock9: Provide a way to directly train weak areas, acc to the data from prev quizzes attempted by user
+#### - :clock9: Implement an option to add friends and solve questions that friends have solved
+#### - :clock9: Implement support for Non MCQ problems
 
 # Screenshots 
 <img src="screenshots/1.png" width="1500"> 
