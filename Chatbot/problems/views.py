@@ -110,7 +110,7 @@ def Reset():
     global user_scores
     user_scores = []
     global user_rating
-    user_rating = []
+    user_rating = 0
     global SESSION_TERMINATED
     SESSION_TERMINATED = False
     global SKIP_ONE_DONE
@@ -195,7 +195,7 @@ def giveProblem():
             SKIP_ONE_DONE = True
             return {'p_statement': "Hello World!"}
     print("Inside give Problem ")
-    while user_rating <= list(problems_that_match_user.keys())[-1]:
+    while user_rating <= list(problems_that_match_user.keys())[-1] :
         if user_rating in problems_that_match_user:
             if len(problems_that_match_user[user_rating]) == 0:
                 user_rating += 50
