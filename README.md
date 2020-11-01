@@ -11,9 +11,9 @@ previous questions
 - :white_check_mark: Integrate everything 
 - :white_check_mark: Remove known Bugs
 - :white_check_mark: Implement functionality to review problems later (Mailer)
-- :x: Implement speech to text 
-- :x: Make chat-bot messages clickable options
-- :x: Deploy
+- :clock9: Implement speech to text 
+- :clock9: Make chat-bot messages clickable options
+- :clock9: Deploy
 
 # Screenshots 
 <img src="screenshots/1.png" width="1500"> 
