@@ -1,3 +1,5 @@
+# ChatBot 
+
 ## TODO : 
 - :white_check_mark: Implement problem class using tags for searching and rating for difficulty
 - :white_check_mark: Implement efficient searching for problems with multiple tags 
@@ -11,7 +13,6 @@ previous questions
 - :white_check_mark: Remove known Bugs
 - :x: Deploy
 
-# ChatBot 
 # Screenshots 
 <img src="screenshots/1.png" width="1500"> 
 <img src="screenshots/2.png" width="1500">
