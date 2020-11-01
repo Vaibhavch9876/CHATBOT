@@ -4,6 +4,7 @@
 # Features :
 #### - :white_check_mark: Support for JEE, AIIMS, GRE, SAT, Coding preparation
 #### - :white_check_mark: Easily expandable to include other types of questions
+#### - :white_check_mark: Cool UI
 #### - :white_check_mark: Automatic keyword detection from english text (can be extended for other languages as well)
 #### - :white_check_mark: Guided Learning, bot detects your current level of skill & recommends problems based on your performance
 #### - :white_check_mark: Report Generation, bot generates a report of users performance after every quiz and Determines weak areas
@@ -19,8 +20,11 @@
 #### - :clock9: Implement support for Non MCQ problems
 
 # Screenshots 
-<img src="screenshots/1.png" width="1500"> 
-<img src="screenshots/2.png" width="1500">
-<img src="screenshots/3.png" width="1500"> 
+<img src="screenshots/s1.png" width="1500"> 
+<img src="screenshots/s2.png" width="1500"> 
+<img src="screenshots/s3.png" width="1500"> 
+<img src="screenshots/s4.png" width="1500"> 
+<img src="screenshots/s5.png" width="1500"> 
+
 
 
