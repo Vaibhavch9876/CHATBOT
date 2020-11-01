@@ -224,6 +224,8 @@ import re
 
 
 def getUserEmail(query_text) :
+    if query_text == None :
+        return ""
     query_text_mod = query_text.strip()
 
     # for custom mails use: '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
