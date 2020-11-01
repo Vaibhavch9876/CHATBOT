@@ -21,7 +21,7 @@ def loadSkillList():
     # skill_list = json.load(skill_file_obj)
     skill_list = {
         "maths": ["maths", "math", "mathematics", "mathe-matics"],
-        "sat": ["sat", ],
+        "sat": ["sat"],
         "reasoning": ["reasoning", "logical reasoning", "iq"],
         "physics": ["physics", "phy"],
         "gre": ["gre"],
