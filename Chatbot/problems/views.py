@@ -20,6 +20,17 @@ def loadSkillList():
     # skill_file_obj = open(JSON_SKILL_LIST_PATH , )
     # skill_list = json.load(skill_file_obj)
     skill_list = {
+        "maths": ["maths", "math", "mathematics", "mathe-matics"],
+        "sat": ["sat", ],
+        "reasoning": ["reasoning", "logical reasoning", "iq"],
+        "physics": ["physics", "phy"],
+        "gre": ["gre"],
+        "jee": ["jee", "mains", "advance"],
+        "inorganic": ["inorganic", "inorganic_chemistry"],
+        "organic": ["organic", "organic_chemistry" , "goc"],
+        "biology": ["biology", "bio"],
+        "friction": ["friction"],
+
         "c": ["c"],
         "cpp": ["c++", "cplusplus"],
         "java": ["java", "java8", "JavaC"],
@@ -36,6 +47,7 @@ def loadSkillList():
         "R": ["R"],
         "javascript": ["js", "js6", "javascript", "javaScript6"]
     }
+
     for skill in skill_list:
         space_added_skill_list[skill] = [' ' + skill_alias + ' ' for skill_alias in skill_list[skill]]
     print("Loaded Skill List", skill_list)
