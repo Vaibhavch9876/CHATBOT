@@ -42,6 +42,7 @@ def loadSkillList():
 
 
 def findSkills(i_text):
+    global user_tag_str
     space_added_text = ' ' + i_text + ' '
     found_skills = {}
     for skill in space_added_skill_list:
@@ -51,6 +52,8 @@ def findSkills(i_text):
         if skill_count > 0:
             found_skills[skill] = skill_count
     print("Skills Found : ", found_skills)
+    for skill in found_skills :
+        user_tag_str += " " + skill
     return found_skills
 
 
@@ -64,6 +67,7 @@ lastProblem = -1
 problems_asked = []
 user_scores = []
 user_rating = 0
+user_tag_str = ""
 SESSION_TERMINATED = False
 SKIP_ONE_DONE = False
 ALL_QUERY_LIST = []
@@ -85,6 +89,8 @@ def Reset():
     skill_list = {}
     global space_added_skill_list
     space_added_skill_list = {}
+    global user_tag_str
+    user_tag_str = ""
 
     global MAX_PROBLEMS
     MAX_PROBLEMS = 9
@@ -105,15 +111,47 @@ def Reset():
     global SKIP_ONE_DONE
     SKIP_ONE_DONE = False
 
-
 def generateReport():
     SESSION_TERMINATED = True
-    print("USER RATING : " , user_rating)
-    print("PROBLEMS ASKED " , len(problems_asked))
-    print("USER SCORE" , user_scores.count(1))
-    print(problems_asked)
-    print(user_scores)
-    return {"p_statement": "Thankyou for taking the test! :D"}
+    """
+    Message!
+    Scored : __ of __ 
+    Percentile Score : ___
+    Remarks : About practicing weak topics and 
+    Enter your email to receive these problems with solutions on your email
+    """
+
+    # Generate Dummy Data for generating a realistic report
+    # This can be added to database and later used for other users
+
+    skill_set_max_rating = int(random.randrange(20 , 30) * 100)
+    user_percentile_score = round(((user_rating * 100) / skill_set_max_rating) + random.randrange(-5 , 5) , 3)
+    user_percentile_score = min(user_percentile_score , 99.999 )
+    user_percentile_score = max(user_percentile_score , 1)
+
+    user_report = {
+        "p_statement" : "Congratulations on completing this quiz!!" ,
+        "p_A" : "You scored " + str(user_scores.count(1)) + " of " + str(len(user_scores)) ,
+        "p_B" : "You reached a final rating of " + str(user_rating) + " of " + str(skill_set_max_rating) ,
+        "p_C" : "Your Percentile score was " + str(user_percentile_score) ,
+        "p_D" : "Great! You are pretty good at " + user_tag_str ,
+        "p_E" : "Enter your email to get detailed solutions to the problems, or refer them later! :D"
+    }
+    if user_percentile_score > 75 :
+        user_report["p_D"] = "Wow! You are pretty good at " + user_tag_str
+    elif  user_percentile_score > 50 :
+        user_report["p_D"] = "Great! A bit of practice and you will do wonders! in " + user_tag_str
+    elif user_percentile_score > 25 :
+        user_report["p_D"] = "Consider " + user_tag_str + " in your weak topics for now, but with practice you will ace it"
+    else :
+        user_report["p_D"] = "You are too weak at " + user_tag_str + ", consider going through the basics again!!"
+        # print("USER RATING : " , user_rating)
+    # print("PROBLEMS ASKED " , len(problems_asked))
+    # print("USER SCORE" , user_scores.count(1))
+    # print(problems_asked)
+    # print(user_scores)
+    return user_report
+    # return {"p_statement": "Thankyou for taking the test! :D"}
 
 
 def evaluateResult(query_text):
