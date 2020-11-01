@@ -59,11 +59,11 @@
           #chat-bot-mode-value {
           color: #FFFFFF;
         }
-        #chat-wrapper #chat-bot-mode.Creative #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.AIIMS #chat-bot-mode-icon {
           background: linear-gradient(to right, #d32f2f, #ff6f00);
         }
         #chat-wrapper
-          #chat-bot-mode.Creative
+          #chat-bot-mode.AIIMS
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #d32f2f;
@@ -312,7 +312,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.Creative
+          .message.received.AIIMS
           .profile-icon {
           background: linear-gradient(to right, #d32f2f, #ff6f00);
         }
@@ -785,7 +785,7 @@
                 transitionPeriod: 30000,
                 intervals: []
             },
-            modes: ['JEE', 'Creative', 'SAT'],
+            modes: ['JEE', 'AIIMS', 'SAT'],
             currentmode: '',
             chatbotMessageIndex: 0,
             nLetterSets: 4
@@ -819,9 +819,9 @@
 <!--                    rand = getRand(1, greetings.JEE.length);-->
 <!--                    return greetings.JEE[rand - 1];-->
 
-<!--                case 'Creative':-->
-<!--                    rand = getRand(1, greetings.Creative.length);-->
-<!--                    return greetings.Creative[rand - 1];-->
+<!--                case 'AIIMS':-->
+<!--                    rand = getRand(1, greetings.AIIMS.length);-->
+<!--                    return greetings.AIIMS[rand - 1];-->
 
 <!--                case 'SAT':-->
 <!--                    rand = getRand(1, greetings.SAT.length);-->
@@ -843,9 +843,9 @@
 <!--                    rand = getRand(1, convo.JEE.length);-->
 <!--                    return convo.JEE[rand - 1];-->
 
-<!--                case 'Creative':-->
-<!--                    rand = getRand(1, convo.Creative.length);-->
-<!--                    return convo.Creative[rand - 1];-->
+<!--                case 'AIIMS':-->
+<!--                    rand = getRand(1, convo.AIIMS.length);-->
+<!--                    return convo.AIIMS[rand - 1];-->
 
 <!--                case 'SAT':-->
 <!--                    rand = getRand(1, convo.SAT.length);-->
@@ -1350,7 +1350,7 @@
         {% endfor %}
       const greetings = {
             JEE: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            Creative: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            AIIMS: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
             SAT: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
 
