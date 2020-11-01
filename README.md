@@ -1,5 +1,5 @@
 ## TODO : 
-- [X] Implement problem class using tags for searching and rating for difficulty
+- :white_check_mark: Implement problem class using tags for searching and rating for difficulty
 2. Implement efficient searching for problems with multiple tags 
 - Done
 3. Extract skills from text entered by user 
