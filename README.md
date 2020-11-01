@@ -1,21 +1,15 @@
 ## TODO : 
 - :white_check_mark: Implement problem class using tags for searching and rating for difficulty
-2. Implement efficient searching for problems with multiple tags 
-- Done
-3. Extract skills from text entered by user 
-- Done
-4. Implement algorithm to decide the difficulty of problems according to user performance in 
+- :white_check_mark: Implement efficient searching for problems with multiple tags 
+- :white_check_mark: Extract skills from text entered by user 
+- :white_check_mark: Implement algorithm to decide the difficulty of problems according to user performance in 
 previous questions 
-- Done
-5. Implement report generation
-6. Implement speech to text 
-7. Implement frontend 
-- Done
-8. Integrate everything 
-- Done
-9. Remove known Bugs
-- Done
-10. Deploy
+- :x: Implement report generation
+- :x: Implement speech to text 
+- :white_check_mark: Implement frontend 
+- :white_check_mark: Integrate everything 
+- :white_check_mark: Remove known Bugs
+- :x: Deploy
 
 # ChatBot 
 # Screenshots 
