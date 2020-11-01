@@ -11,7 +11,7 @@ JSON_SKILL_LIST_PATH = "skillList.json"
 skill_file_obj = None
 skill_list = {}
 space_added_skill_list = {}
-
+GREET_MESSAGE = """Hi there! My name is Shelly, your Exam assistant. Be it JEE, AIIMS, SAT,or GRE, I can help you prepare for it. What topics do you want to start with ?"""
 
 def loadSkillList():
     global skill_list
@@ -84,7 +84,7 @@ user_tag_str = ""
 SESSION_TERMINATED = False
 SKIP_ONE_DONE = False
 ALL_QUERY_LIST = []
-PREVIOUSLY_RENDERED = {"p_statement": "HelloWorld! :D"}
+PREVIOUSLY_RENDERED = {"p_statement": GREET_MESSAGE }
 user_problem_list = []
 
 
@@ -92,7 +92,7 @@ def Reset():
     global user_problem_list
     user_problem_list = []
     global PREVIOUSLY_RENDERED
-    PREVIOUSLY_RENDERED = {"p_statement": "HelloWorld! :D"}
+    PREVIOUSLY_RENDERED = {"p_statement": GREET_MESSAGE}
     global ALL_QUERY_LIST
     ALL_QUERY_LIST = []
     # Reset to default
@@ -205,7 +205,7 @@ def giveProblem():
             return generateReport()
         else:
             SKIP_ONE_DONE = True
-            return {'p_statement': "Hello World!"}
+            return {'p_statement': GREET_MESSAGE }
     print("Inside give Problem ")
     while user_rating <= list(problems_that_match_user.keys())[-1] :
         if user_rating in problems_that_match_user:

@@ -50,11 +50,11 @@
           white-space: nowrap;
           z-index: 10;
         }
-        #chat-wrapper #chat-bot-mode.Smart #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.JEE #chat-bot-mode-icon {
           background: linear-gradient(to right, #00bfaa, #00bfaa);
         }
         #chat-wrapper
-          #chat-bot-mode.Smart
+          #chat-bot-mode.JEE
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #FFFFFF;
@@ -68,11 +68,11 @@
           #chat-bot-mode-value {
           color: #d32f2f;
         }
-        #chat-wrapper #chat-bot-mode.Passionate #chat-bot-mode-icon {
+        #chat-wrapper #chat-bot-mode.SAT #chat-bot-mode-icon {
           background: linear-gradient(to right, #ff6f00, #fbc02d);
         }
         #chat-wrapper
-          #chat-bot-mode.Passionate
+          #chat-bot-mode.SAT
           #chat-bot-mode-label
           #chat-bot-mode-value {
           color: #ff6f00;
@@ -304,7 +304,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.Smart
+          .message.received.JEE
           .profile-icon {
           background: linear-gradient(to right, #FFFFFF, #00bfaa);
         }
@@ -320,7 +320,7 @@
           #chat-message-window
           #chat-message-column-wrapper
           #chat-message-column
-          .message.received.Passionate
+          .message.received.SAT
           .profile-icon {
           background: linear-gradient(to right, #ff6f00, #fbc02d);
         }
@@ -627,9 +627,8 @@
         <div id="chat-bot-mode">
             <div id="chat-bot-mode-icon"></div>
             <div id="chat-bot-mode-label">
-                <h1 id="chat-bot-mode-text">We are looking for</h1>
+                <h1 id="chat-bot-mode-text">I can Help you with </h1>
                 <h1 id="chat-bot-mode-value">mode</h1>
-                <h1 id="chat-bot-mode-text">programmers.</h1>
             </div>
         </div>
         <div id="letter-pool"></div>
@@ -786,7 +785,7 @@
                 transitionPeriod: 30000,
                 intervals: []
             },
-            modes: ['Smart', 'Creative', 'Passionate'],
+            modes: ['JEE', 'Creative', 'SAT'],
             currentmode: '',
             chatbotMessageIndex: 0,
             nLetterSets: 4
@@ -812,21 +811,21 @@
         const getRandGreeting = () => {
                     ++messageIndex;
                     messageIndex %= messageCount;
-                    return greetings.Smart[ (messageIndex - 1 + messageCount) % messageCount ];
+                    return greetings.JEE[ (messageIndex - 1 + messageCount) % messageCount ];
 <!--            let rand = 0;-->
 
 <!--            switch (STATE.currentmode) {-->
-<!--                case 'Smart':-->
-<!--                    rand = getRand(1, greetings.Smart.length);-->
-<!--                    return greetings.Smart[rand - 1];-->
+<!--                case 'JEE':-->
+<!--                    rand = getRand(1, greetings.JEE.length);-->
+<!--                    return greetings.JEE[rand - 1];-->
 
 <!--                case 'Creative':-->
 <!--                    rand = getRand(1, greetings.Creative.length);-->
 <!--                    return greetings.Creative[rand - 1];-->
 
-<!--                case 'Passionate':-->
-<!--                    rand = getRand(1, greetings.Passionate.length);-->
-<!--                    return greetings.Passionate[rand - 1];-->
+<!--                case 'SAT':-->
+<!--                    rand = getRand(1, greetings.SAT.length);-->
+<!--                    return greetings.SAT[rand - 1];-->
 
 <!--                default:-->
 <!--                    break;-->
@@ -836,21 +835,21 @@
         const getRandConvo = () => {
                 ++messageIndex;
                 messageIndex %= messageCount;
-                return greetings.Smart[ (messageIndex - 1 + messageCount) % messageCount ];
+                return greetings.JEE[ (messageIndex - 1 + messageCount) % messageCount ];
 <!--            let rand = 0;-->
 
 <!--            switch (STATE.currentmode) {-->
-<!--                case 'Smart':-->
-<!--                    rand = getRand(1, convo.Smart.length);-->
-<!--                    return convo.Smart[rand - 1];-->
+<!--                case 'JEE':-->
+<!--                    rand = getRand(1, convo.JEE.length);-->
+<!--                    return convo.JEE[rand - 1];-->
 
 <!--                case 'Creative':-->
 <!--                    rand = getRand(1, convo.Creative.length);-->
 <!--                    return convo.Creative[rand - 1];-->
 
-<!--                case 'Passionate':-->
-<!--                    rand = getRand(1, convo.Passionate.length);-->
-<!--                    return convo.Passionate[rand - 1];-->
+<!--                case 'SAT':-->
+<!--                    rand = getRand(1, convo.SAT.length);-->
+<!--                    return convo.SAT[rand - 1];-->
 
 <!--                default:-->
 <!--                    break;-->
@@ -1350,15 +1349,15 @@
 <!--            Message += "E. " + optionE;-->
         {% endfor %}
       const greetings = {
-            Smart: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            JEE: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
             Creative: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            Passionate: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
+            SAT: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
 
         const convo = {
-            Smart: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
-            Creative: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ] ,
-            Passionate: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
+            JEE: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ],
+            AIIMS: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ] ,
+            SAT: [Message1 , Message2 , Message3 , Message4 , Message5 , Message6 ]
         };
     </script>
 </body>
