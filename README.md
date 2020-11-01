@@ -21,7 +21,7 @@
 
 # Screenshots :
 
--Automatic keyword extraction from text
+- Automatic keyword extraction from text
 <img src="screenshots/s1.png" width="1500"> 
 
 - Recommends problems based on your performance
