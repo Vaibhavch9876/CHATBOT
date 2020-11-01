@@ -1,8 +1,3 @@
-# ChatBot 
-# Screenshots 
-<img src="screenshots/Screenshot (754).png" width="1500"> 
-<img src="screenshots/Screenshot (755).png" width="1500"> 
-
 ## TODO : 
 1. Implement problem class using tags for searching and rating for difficulty
 - Done
@@ -22,3 +17,10 @@ previous questions
 9. Remove known Bugs
 - Done
 10. Deploy
+
+# ChatBot 
+# Screenshots 
+<img src="screenshots/Screenshot (754).png" width="1500"> 
+<img src="screenshots/Screenshot (755).png" width="1500"> 
+
+
