@@ -4,7 +4,7 @@
 - :white_check_mark: Extract skills from text entered by user 
 - :white_check_mark: Implement algorithm to decide the difficulty of problems according to user performance in 
 previous questions 
-- :x: Implement report generation
+- :white_check_mark: Implement report generation
 - :x: Implement speech to text 
 - :white_check_mark: Implement frontend 
 - :white_check_mark: Integrate everything 
