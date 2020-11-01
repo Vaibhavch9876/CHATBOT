@@ -284,7 +284,7 @@ def mailUserProblems(query_text):
 
     # Send the message via our own SMTP server.
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("team.whitehatsr@gmail.com", "@bhishek123")
+    server.login("team.whitehatsr@gmail.com", "password_here") #this is not the correct password
     server.send_message(msg)
     server.quit()
 
