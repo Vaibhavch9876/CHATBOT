@@ -12,6 +12,7 @@ skill_file_obj = None
 skill_list = {}
 space_added_skill_list = {}
 
+
 def loadSkillList():
     global skill_list
     global skill_file_obj
@@ -52,7 +53,7 @@ def findSkills(i_text):
         if skill_count > 0:
             found_skills[skill] = skill_count
     print("Skills Found : ", found_skills)
-    for skill in found_skills :
+    for skill in found_skills:
         user_tag_str += " " + skill
     return found_skills
 
@@ -71,11 +72,15 @@ user_tag_str = ""
 SESSION_TERMINATED = False
 SKIP_ONE_DONE = False
 ALL_QUERY_LIST = []
-PREVIOUSLY_RENDERED = {"p_statement" : "HelloWorld! :D"}
+PREVIOUSLY_RENDERED = {"p_statement": "HelloWorld! :D"}
+user_problem_list = []
+
 
 def Reset():
+    global user_problem_list
+    user_problem_list = []
     global PREVIOUSLY_RENDERED
-    PREVIOUSLY_RENDERED = {"p_statement" : "HelloWorld! :D"}
+    PREVIOUSLY_RENDERED = {"p_statement": "HelloWorld! :D"}
     global ALL_QUERY_LIST
     ALL_QUERY_LIST = []
     # Reset to default
@@ -111,7 +116,9 @@ def Reset():
     global SKIP_ONE_DONE
     SKIP_ONE_DONE = False
 
+
 def generateReport():
+    global SESSION_TERMINATED
     SESSION_TERMINATED = True
     """
     Message!
@@ -124,26 +131,27 @@ def generateReport():
     # Generate Dummy Data for generating a realistic report
     # This can be added to database and later used for other users
 
-    skill_set_max_rating = int(random.randrange(20 , 30) * 100)
-    user_percentile_score = round(((user_rating * 100) / skill_set_max_rating) + random.randrange(-5 , 5) , 3)
-    user_percentile_score = min(user_percentile_score , 99.999 )
-    user_percentile_score = max(user_percentile_score , 1)
+    skill_set_max_rating = int(random.randrange(20, 30) * 100)
+    user_percentile_score = round(((user_rating * 100) / skill_set_max_rating) + random.randrange(-5, 5), 3)
+    user_percentile_score = min(user_percentile_score, 99.999)
+    user_percentile_score = max(user_percentile_score, 1)
 
     user_report = {
-        "p_statement" : "Congratulations on completing this quiz!!" ,
-        "p_A" : "You scored " + str(user_scores.count(1)) + " of " + str(len(user_scores)) ,
-        "p_B" : "You reached a final rating of " + str(user_rating) + " of " + str(skill_set_max_rating) ,
-        "p_C" : "Your Percentile score was " + str(user_percentile_score) ,
-        "p_D" : "Great! You are pretty good at " + user_tag_str ,
-        "p_E" : "Enter your email to get detailed solutions to the problems, or refer them later! :D"
+        "p_statement": "Congratulations on completing this quiz!!",
+        "p_A": "You scored " + str(user_scores.count(1)) + " of " + str(len(user_scores)),
+        "p_B": "You reached a final rating of " + str(user_rating) + " of " + str(skill_set_max_rating),
+        "p_C": "Your Percentile score was " + str(user_percentile_score),
+        "p_D": "Great! You are pretty good at " + user_tag_str,
+        "p_E": "Enter your email to get detailed solutions to the problems, or refer them later! :D"
     }
-    if user_percentile_score > 75 :
+    if user_percentile_score > 75:
         user_report["p_D"] = "Wow! You are pretty good at " + user_tag_str
-    elif  user_percentile_score > 50 :
+    elif user_percentile_score > 50:
         user_report["p_D"] = "Great! A bit of practice and you will do wonders! in " + user_tag_str
-    elif user_percentile_score > 25 :
-        user_report["p_D"] = "Consider " + user_tag_str + " in your weak topics for now, but with practice you will ace it"
-    else :
+    elif user_percentile_score > 25:
+        user_report["p_D"] = "Consider " + user_tag_str + "in your weak topics for now, but with practice you will " \
+                                                          "ace it "
+    else:
         user_report["p_D"] = "You are too weak at " + user_tag_str + ", consider going through the basics again!!"
         # print("USER RATING : " , user_rating)
     # print("PROBLEMS ASKED " , len(problems_asked))
@@ -162,7 +170,7 @@ def evaluateResult(query_text):
     global problems_asked
     global lastProblem
     problems_asked.append(lastProblem.p_id)
-    print("Acc to me LAST PROBLEM WAS " , lastProblem.p_statement)
+    print("Acc to me LAST PROBLEM WAS ", lastProblem.p_statement)
     if str(query_text).lower() == str(lastProblem.p_correct).lower():
         user_scores.append(1)
         user_rating += 50
@@ -177,15 +185,15 @@ def giveProblem():
     global problems_that_match_user
     global lastProblem
     global problem_displayed
-    print("user problems , scores " , problems_asked , user_scores)
+    print("user problems , scores ", problems_asked, user_scores)
     if len(problems_asked) > MAX_PROBLEMS:
         return generateReport()
     if len(problems_that_match_user) == 0:
-        if SKIP_ONE_DONE :
+        if SKIP_ONE_DONE:
             return generateReport()
-        else :
+        else:
             SKIP_ONE_DONE = True
-            return {'p_statement' : "Hello World!"}
+            return {'p_statement': "Hello World!"}
     print("Inside give Problem ")
     while user_rating <= list(problems_that_match_user.keys())[-1]:
         if user_rating in problems_that_match_user:
@@ -210,8 +218,64 @@ def giveProblem():
     return lastProblem
 
 
+import smtplib
+from email.message import EmailMessage
+import re
+
+
+def getUserEmail(query_text) :
+    query_text_mod = query_text.strip()
+
+    # for custom mails use: '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
+    regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if (re.search(regex_email, query_text_mod)):
+        return query_text_mod
+    return ""
+
+
+def mailUserProblems(query_text):
+    # Check if this is a valid email address
+    user_email = getUserEmail(query_text)
+    if len(user_email) == "" :
+        return
+
+    EMAIL_CONTENT = "These are the problems from your quiz : \n"
+    for prob in user_problem_list[1:-1]:
+        print("problem " , prob)
+        CURRENT_PROBLEM = ""
+        if len(prob.p_A) != 0 :
+            CURRENT_PROBLEM += prob.p_statement
+            CURRENT_PROBLEM += "\nOptions"
+            CURRENT_PROBLEM += "\nA. " + prob.p_A
+        if len(prob.p_B) != 0 :
+            CURRENT_PROBLEM += "\nB. " + prob.p_B
+        if len(prob.p_C) != 0 :
+            CURRENT_PROBLEM += "\nC. " + prob.p_C
+        if len(prob.p_D) != 0 :
+            CURRENT_PROBLEM += "\nD. " + prob.p_D
+        if len(prob.p_E) != 0 :
+            CURRENT_PROBLEM += "\nE. " + prob.p_E
+        CURRENT_PROBLEM+="\n\nCorrect: " + prob.p_correct
+        CURRENT_PROBLEM+="\n"
+
+        EMAIL_CONTENT += "\n" + CURRENT_PROBLEM
+    print(EMAIL_CONTENT)
+    msg = EmailMessage()
+    msg.set_content(EMAIL_CONTENT)
+
+    msg['Subject'] = 'Subject'
+    msg['From'] = "team.whitehatsr@gmail.com"
+    msg['To'] = user_email
+
+    # Send the message via our own SMTP server.
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.login("team.whitehatsr@gmail.com", "@bhishek123")
+    server.send_message(msg)
+    server.quit()
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
 
 class SearchResultsView(ListView):
     model = Problem
@@ -225,10 +289,13 @@ class SearchResultsView(ListView):
         global problems_that_match_user
         query_text = self.request.GET.get('q')
         ALL_QUERY_LIST.append(query_text)
-        print(len(ALL_QUERY_LIST) , ALL_QUERY_LIST)
+        print(len(ALL_QUERY_LIST), ALL_QUERY_LIST)
 
         if SESSION_TERMINATED:
+            # Query text might be a mail address and maybe the user wants the problems and solutions
+            mailUserProblems(query_text)
             Reset()
+            print("RESET EVERYTHING")
         if problem_displayed:
             evaluateResult(query_text)
         if SKIP_ONE_DONE and first_time:
@@ -267,5 +334,8 @@ class SearchResultsView(ListView):
         # if len(ALL_QUERY_LIST) > 1 and ALL_QUERY_LIST[-1] == ALL_QUERY_LIST[-2]:
         #     print("here " , ALL_QUERY_LIST)
         #     return [PREVIOUSLY_RENDERED]
-        PREVIOUSLY_RENDERED = [giveProblem()]
+
+        PREVIOUSLY_RENDERED = giveProblem()
+        user_problem_list.append(PREVIOUSLY_RENDERED)
+        PREVIOUSLY_RENDERED = [PREVIOUSLY_RENDERED]
         return PREVIOUSLY_RENDERED
