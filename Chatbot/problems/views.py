@@ -106,7 +106,7 @@ def Reset():
     SKIP_ONE_DONE = False
 
 
-def giveResult():
+def generateReport():
     SESSION_TERMINATED = True
     print("USER RATING : " , user_rating)
     print("PROBLEMS ASKED " , len(problems_asked))
@@ -141,10 +141,10 @@ def giveProblem():
     global problem_displayed
     print("user problems , scores " , problems_asked , user_scores)
     if len(problems_asked) > MAX_PROBLEMS:
-        return giveResult()
+        return generateReport()
     if len(problems_that_match_user) == 0:
         if SKIP_ONE_DONE :
-            return giveResult()
+            return generateReport()
         else :
             SKIP_ONE_DONE = True
             return {'p_statement' : "Hello World!"}
@@ -159,7 +159,7 @@ def giveProblem():
             user_rating += 50
 
     if user_rating > list(problems_that_match_user.keys())[-1]:
-        return giveResult()
+        return generateReport()
 
     p_index = random.randrange(len(problems_that_match_user[user_rating]))
     lastProblem = problems_that_match_user[user_rating][p_index]
