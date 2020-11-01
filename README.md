@@ -21,13 +21,16 @@
 
 # Screenshots :
 
-##### -Automatic keyword extraction from text
+-Automatic keyword extraction from text
 <img src="screenshots/s1.png" width="1500"> 
-##### - Recommends problems based on your performance
+
+- Recommends problems based on your performance
 <img src="screenshots/s2.png" width="1500"> 
-##### - Generates report of the quiz and identifies strong/weak areas
+
+- Generates report of the quiz and identifies strong/weak areas
 <img src="screenshots/s3.png" width="1500"> 
-##### - Mails you the quiz with solutions for future referrence
+
+- Mails you the quiz with solutions for future referrence
 <img src="screenshots/s4.png" width="1500"> 
 
 
