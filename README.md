@@ -34,5 +34,5 @@
 <img src="screenshots/s4.png" width="1500"> 
 
 # Installation : 
-git clone https://github.com/Vaibhavch9876/Beta28_WhiteHatSr.git
-pip install -r requirements.txt
+- git clone https://github.com/Vaibhavch9876/Beta28_WhiteHatSr.git
+- pip install -r requirements.txt
