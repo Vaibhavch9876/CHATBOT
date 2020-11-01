@@ -7,10 +7,12 @@
 - :white_check_mark: Implement algorithm to decide the difficulty of problems according to user performance in 
 previous questions 
 - :white_check_mark: Implement report generation
-- :x: Implement speech to text 
 - :white_check_mark: Implement frontend 
 - :white_check_mark: Integrate everything 
 - :white_check_mark: Remove known Bugs
+- :x: Implement speech to text 
+- :x: Implement functionality to review problems later (Mailer)
+- :x: Make chat-bot messages clickable options
 - :x: Deploy
 
 # Screenshots 
