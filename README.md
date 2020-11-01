@@ -13,7 +13,8 @@ previous questions
 
 # ChatBot 
 # Screenshots 
-<img src="screenshots/Screenshot (754).png" width="1500"> 
-<img src="screenshots/Screenshot (755).png" width="1500"> 
+<img src="screenshots/1.png" width="1500"> 
+<img src="screenshots/2.png" width="1500">
+<img src="screenshots/3.png" width="1500"> 
 
 
