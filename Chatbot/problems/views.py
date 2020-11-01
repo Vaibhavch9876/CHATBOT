@@ -227,7 +227,8 @@ def getUserEmail(query_text) :
     if query_text == None :
         return ""
     query_text_mod = query_text.strip()
-
+    if query_text_mod == "" :
+        return ""
     # for custom mails use: '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
     regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     if (re.search(regex_email, query_text_mod)):
@@ -238,7 +239,7 @@ def getUserEmail(query_text) :
 def mailUserProblems(query_text):
     # Check if this is a valid email address
     user_email = getUserEmail(query_text)
-    if len(user_email) == "" :
+    if len(user_email) == 0 :
         return
 
     EMAIL_CONTENT = "These are the problems from your quiz : \n"
