@@ -5,7 +5,7 @@
 #### - :white_check_mark: Support for JEE, AIIMS, GRE, SAT, Coding preparation
 #### - :white_check_mark: Easily expandable to include other types of questions
 #### - :white_check_mark: Automatic keyword detection from english text (can be extended for other languages as well)
-#### - :white_check_mark: Guided Learning, the bot understands your current level of skill and recommends problems based on your performance
+#### - :white_check_mark: Guided Learning, bot detects your current level of skill & recommends problems based on your performance
 #### - :white_check_mark: Report Generation, bot generates a report of users performance after every quiz and Determines weak areas
 #### - :white_check_mark: Compares you to others who took same test and gives your percentile score
 #### - :white_check_mark: Provides an option to get quiz along with detailed solutions mailed to your email for referring in future 
