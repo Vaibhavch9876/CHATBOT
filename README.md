@@ -10,8 +10,8 @@ previous questions
 - :white_check_mark: Implement frontend 
 - :white_check_mark: Integrate everything 
 - :white_check_mark: Remove known Bugs
+- :white_check_mark: Implement functionality to review problems later (Mailer)
 - :x: Implement speech to text 
-- :x: Implement functionality to review problems later (Mailer)
 - :x: Make chat-bot messages clickable options
 - :x: Deploy
 
