@@ -1,4 +1,4 @@
-# Chatbot SHELLY 
+# Chatbot
 #### Be it JEE, AIIMS, SAT, or GRE, I can help you prepare for it.
 ## [Demo Video](https://drive.google.com/file/d/1LkdK0EPQ5aKR9FPdiQg6JJoaSFvgCZKA/view?usp=sharing)
 # Features :
